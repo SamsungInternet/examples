@@ -14,7 +14,7 @@ import com.example.samsunginternet.customtabdemo.customtab.CustomTabServiceContr
 public class MainActivity extends AppCompatActivity {
 
     private static final String URL_TO_LOAD = "https://medium.com/samsung-internet-dev";
-    private static final int TOOLBAR_COLOR = Color.rgb(55, 73, 113);
+    private static final int TOOLBAR_COLOR = Color.rgb(152, 127, 255);
 
     private CustomTabServiceController customTabServiceController;
     private Intent customTabIntent;
