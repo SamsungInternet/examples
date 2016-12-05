@@ -1,4 +1,4 @@
-package com.example.samsunginternet.customtabsdemo;
+package com.example.samsunginternet.customtabdemo;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,12 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.samsunginternet.customtabdemo.customtab.CustomTabHelper;
+import com.example.samsunginternet.customtabdemo.customtab.CustomTabServiceController;
 
-    private static final String CUSTOM_TABS_EXTRA_SESSION =
-            "android.support.customtabs.extra.SESSION";
-    private static final String CUSTOM_TABS_TOOLBAR_COLOR =
-            "android.support.customtabs.extra.TOOLBAR_COLOR";
+public class MainActivity extends AppCompatActivity {
 
     private static final String URL_TO_LOAD = "https://medium.com/samsung-internet-dev";
     private static final int TOOLBAR_COLOR = Color.rgb(55, 73, 113);
@@ -21,22 +19,10 @@ public class MainActivity extends AppCompatActivity {
     private CustomTabServiceController customTabServiceController;
     private Intent customTabIntent;
 
-    protected void setupCustomTabService() {
+    protected void setupCustomTabs() {
         customTabServiceController = new CustomTabServiceController(this, URL_TO_LOAD);
         customTabServiceController.bindCustomTabService();
-    }
-
-    protected void setupCustomTabIntent() {
-
-        customTabIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_TO_LOAD));
-        customTabIntent.setPackage(CustomTabHelper.getPackageNameToUse(this));
-
-        Bundle extras = new Bundle();
-        // Used to match session. Even if not used, has to be present with null to launch custom tab
-        extras.putBinder(CUSTOM_TABS_EXTRA_SESSION, null);
-        extras.putInt(CUSTOM_TABS_TOOLBAR_COLOR, TOOLBAR_COLOR);
-        customTabIntent.putExtras(extras);
-
+        customTabIntent = customTabServiceController.createCustomTabIntent(null, TOOLBAR_COLOR);
     }
 
     @Override
@@ -45,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setupCustomTabService();
-        setupCustomTabIntent();
+        setupCustomTabs();
 
         final Button customTabButton = (Button) findViewById(R.id.buttonCustomTab);
 

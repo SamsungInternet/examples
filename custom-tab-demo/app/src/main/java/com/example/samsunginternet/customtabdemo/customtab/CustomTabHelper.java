@@ -1,4 +1,4 @@
-package com.example.samsunginternet.customtabsdemo;
+package com.example.samsunginternet.customtabdemo.customtab;
 
 import android.content.Context;
 import android.content.Intent;
