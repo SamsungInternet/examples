@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String CUSTOM_TABS_TOOLBAR_COLOR =
             "android.support.customtabs.extra.TOOLBAR_COLOR";
 
-    private static final String URL_TO_LOAD = "http://developer.samsung.com/internet";
+    private static final String URL_TO_LOAD = "https://medium.com/samsung-internet-dev";
     private static final int TOOLBAR_COLOR = Color.rgb(55, 73, 113);
 
     private CustomTabServiceController customTabServiceController;

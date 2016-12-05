@@ -24,7 +24,7 @@ public class CustomTabHelper {
         PackageManager pm = context.getPackageManager();
 
         // Get default VIEW intent handler
-        Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.samsung.com"));
+        Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.samsung.com"));
         ResolveInfo defaultViewHandlerInfo = pm.resolveActivity(activityIntent, 0);
 
         String defaultViewHandlerPackageName = null;

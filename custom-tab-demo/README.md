@@ -6,14 +6,14 @@ On non-Samsung devices it should use Chrome or whatever it picks up as a valid h
 
 ![Screenshot](docs/screenshot.png?raw=true "Screenshot") 
 
-## Disclaimer
-
-Mainly focusing on the web, I am not a seasoned Android app developer. If you spot issues or improvements to be made in the code, please do raise an issue or a PR. Thanks! - Peter
-
 ## Tested on
 
 * Samsung S7 on Android v6.0.1
 * Nexus 5 on Android v6.0.1
+
+## Disclaimer
+
+My Java is a bit rusty and I don't have a whole lot of Android development experience! If you spot issues or improvements to be made in the code, please do raise an issue or a PR. Thanks! - Peter
 
 ## See also
 
