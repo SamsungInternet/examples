@@ -1,8 +1,9 @@
 # Payment Request API simple demo
 
 A simple front-end demonstration of the [Payment Request API](https://www.w3.org/TR/payment-request/). 
-It just simulates the server-side so won't actually take a real payment!
-You can enter fake details or whatever you like to try it out.
+You can just enter made-up details - it just simulates the server-side so won't actually take a real payment!
+
+[Try it out here](https://samsunginter.net/examples/payment-request-demo-simple/)
 
 ## Instructions
 
