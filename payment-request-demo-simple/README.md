@@ -3,9 +3,9 @@
 A simple front-end demonstration of the [Payment Request API](https://www.w3.org/TR/payment-request/). 
 You can just enter made-up details - it just simulates the server-side so won't actually take a real payment!
 
-[Try it out here](https://samsunginter.net/examples/payment-request-demo-simple/)
+**[Try it out here](https://samsunginter.net/examples/payment-request-demo-simple/)**
 
-## Instructions
+## Development
 
 To run locally, spin up any static web server, such as `python -m SimpleHTTPServer`
 or [Chrome's web server extension](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en).
