@@ -1,4 +1,4 @@
-# Other examples
+# Examples
 
 This repository contains miscellaneous examples from the Samsung Internet team:
 
