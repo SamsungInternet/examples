@@ -1,9 +1,12 @@
 # Payment Request API simple demo
 
+*Accompanying blog post: ["How to take payments on the web with the Payment Request API"](https://medium.com/samsung-internet-dev/how-to-take-payments-on-the-web-with-the-payment-request-api-a523f6fc7c1f)*
+
 A simple front-end demonstration of the [Payment Request API](https://www.w3.org/TR/payment-request/). 
 You can just enter made-up details - it just simulates the server-side so won't actually take a real payment!
 
 **[Try it out here](https://samsunginter.net/examples/payment-request-demo-simple/)**
+
 
 ## Development
 
