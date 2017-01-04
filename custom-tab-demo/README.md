@@ -22,5 +22,6 @@ My Java is a bit rusty and I don't have a whole lot of Android development exper
 * [Custom Tab details on the Samsung Developers site](http://developer.samsung.com/technical-doc/view.do?v=T000000245)
 * [Sergio Angeles' blog post](https://www.captechconsulting.com/blogs/an-introduction-to-chrome-custom-tabs-for-android)
 * [Paul Kinlan's article on Chrome Developers site](https://developer.chrome.com/multidevice/android/customtabs)
-* [Chrome Custom Tabs examples](https://github.com/GoogleChrome/custom-tabs-client)
+* [Chrome custom tabs examples](https://github.com/GoogleChrome/custom-tabs-client)
+* [Best practices for custom tabs](https://medium.com/google-developers/best-practices-for-custom-tabs-5700e55143ee)
 
