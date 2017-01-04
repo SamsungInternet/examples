@@ -1,5 +1,7 @@
 # Custom Tab Demo
 
+*Accompanying blog post: ["Custom tabs for Samsung Internet"](https://medium.com/samsung-internet-dev/custom-tabs-for-samsung-internet-8563e4754b22)*
+
 An Android app that demonstrates launching a custom tab that should use the Samsung Internet browser if it is available and the default browser.
 
 On non-Samsung devices it should use Chrome or whatever it picks up as a valid handler for the Intent.
