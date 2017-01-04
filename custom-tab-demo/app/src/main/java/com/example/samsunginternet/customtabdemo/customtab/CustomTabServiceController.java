@@ -38,7 +38,7 @@ public class CustomTabServiceController extends CustomTabsServiceConnection {
 
         if (customTabsClient != null) {
 
-            // To make the page load faster
+            // To make the page load faster (flag argument is reserved for future use)
             customTabsClient.warmup(0L);
 
             // Create a new session
@@ -47,7 +47,7 @@ public class CustomTabServiceController extends CustomTabsServiceConnection {
             if (!TextUtils.isEmpty(urlToLoad)) {
                 Uri uri = Uri.parse(urlToLoad);
                 if (uri != null && customTabsSession != null) {
-                    // Let the session know that it may launch this URL soon
+                    // Let session know that it may launch this URL soon, for performance optimisation
                     customTabsSession.mayLaunchUrl(uri, null, null);
                 }
             }
@@ -80,10 +80,14 @@ public class CustomTabServiceController extends CustomTabsServiceConnection {
         intent.setPackage(CustomTabHelper.getPackageNameToUse(ctx));
 
         Bundle extras = new Bundle();
+        extras.putInt(CUSTOM_TABS_TOOLBAR_COLOR, toolbarColor);
         // Used to match session. Even if not used, has to be present with null to launch custom tab
         extras.putBinder(CUSTOM_TABS_EXTRA_SESSION, session);
-        extras.putInt(CUSTOM_TABS_TOOLBAR_COLOR, toolbarColor);
+        // Add the referrer
+        extras.putParcelable(Intent.EXTRA_REFERRER, Uri.parse(Intent.URI_ANDROID_APP_SCHEME + "//" + ctx.getPackageName()));
+
         intent.putExtras(extras);
+
         return intent;
     }
 
