@@ -62,9 +62,11 @@ public class CustomTabServiceController extends CustomTabsServiceConnection {
 
     public void bindCustomTabService() {
         Context ctx = contextWeakRef.get();
-        if (ctx != null) {
-            CustomTabsClient.bindCustomTabsService(ctx, CustomTabHelper.getPackageNameToUse(ctx), this);
+        String packageName = CustomTabHelper.getPackageNameToUse(ctx);
+        if (ctx == null || packageName == null) {
+            return;
         }
+        CustomTabsClient.bindCustomTabsService(ctx, packageName, this);
     }
 
     public void unbindCustomTabService() {
@@ -75,18 +77,28 @@ public class CustomTabServiceController extends CustomTabsServiceConnection {
     }
 
     public Intent createCustomTabIntent(Binder session, int toolbarColor) {
+
         Context ctx = contextWeakRef.get();
+
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToLoad));
-        intent.setPackage(CustomTabHelper.getPackageNameToUse(ctx));
 
-        Bundle extras = new Bundle();
-        extras.putInt(CUSTOM_TABS_TOOLBAR_COLOR, toolbarColor);
-        // Used to match session. Even if not used, has to be present with null to launch custom tab
-        extras.putBinder(CUSTOM_TABS_EXTRA_SESSION, session);
-        // Add the referrer
-        extras.putParcelable(Intent.EXTRA_REFERRER, Uri.parse(Intent.URI_ANDROID_APP_SCHEME + "//" + ctx.getPackageName()));
+        String packageName = CustomTabHelper.getPackageNameToUse(ctx);
 
-        intent.putExtras(extras);
+        // If custom tab support, otherwise should fallback to simply opening in the browser
+        if (packageName != null) {
+
+            intent.setPackage(packageName);
+
+            Bundle extras = new Bundle();
+            extras.putInt(CUSTOM_TABS_TOOLBAR_COLOR, toolbarColor);
+            // Used to match session. Even if not used, has to be present with null to launch custom tab
+            extras.putBinder(CUSTOM_TABS_EXTRA_SESSION, session);
+            // Add the referrer
+            extras.putParcelable(Intent.EXTRA_REFERRER, Uri.parse(Intent.URI_ANDROID_APP_SCHEME + "//" + ctx.getPackageName()));
+
+            intent.putExtras(extras);
+
+        }
 
         return intent;
     }
