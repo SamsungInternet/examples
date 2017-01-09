@@ -6,7 +6,7 @@ A simple Android app that demonstrates launching a custom tab. If a browser is i
 tab support (e.g. Samsung Internet v4+ or Chrome), it should open with that. If no custom tab support 
 is available, the link should fall back to opening in the default browser app as normal.
 
-![Screenshot](docs/screenshot.png?raw=true "Screenshot") 
+<img src="docs/samsung-internet-custom-tab.gif?raw=true" width="200px" href="" alt="Demo gif"/>
 
 ## Tested on
 
