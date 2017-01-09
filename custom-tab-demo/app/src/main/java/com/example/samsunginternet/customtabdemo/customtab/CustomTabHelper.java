@@ -19,12 +19,12 @@ import static android.support.customtabs.CustomTabsService.ACTION_CUSTOM_TABS_CO
  */
 public class CustomTabHelper {
 
-    public static String getPackageNameToUse(Context context) {
+    public static String getPackageNameToUse(Context context, String urlToLoad) {
 
         PackageManager pm = context.getPackageManager();
 
         // Get default VIEW intent handler
-        Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.samsung.com"));
+        Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToLoad));
         ResolveInfo defaultViewHandlerInfo = pm.resolveActivity(activityIntent, 0);
 
         String defaultViewHandlerPackageName = null;
@@ -51,10 +51,13 @@ public class CustomTabHelper {
 
             if (!TextUtils.isEmpty(defaultViewHandlerPackageName) &&
                 packagesSupportingCustomTabs.contains(defaultViewHandlerPackageName)) {
-                // Prefer default
+                // Prefer the defined default
                 return defaultViewHandlerPackageName;
             } else {
-                // Default to first in the list
+                // Otherwise just select the first one, to keep this demo simple for now.
+                // NOTE: If there are multiple options, it would probably be better to ask the user
+                // to decide which app to use. See Andre Bandarra's Best Practices guide:
+                // https://medium.com/google-developers/best-practices-for-custom-tabs-5700e55143ee
                 return packagesSupportingCustomTabs.get(0);
             }
         }
