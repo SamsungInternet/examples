@@ -2,9 +2,9 @@
 
 *Accompanying blog post: ["Custom tabs for Samsung Internet"](https://medium.com/samsung-internet-dev/custom-tabs-for-samsung-internet-8563e4754b22)*
 
-An Android app that demonstrates launching a custom tab that should use the Samsung Internet browser if it is available and the default browser.
-
-On non-Samsung devices it should use Chrome or whatever it picks up as a valid handler for the Intent.
+A simple Android app that demonstrates launching a custom tab. If a browser is installed with custom 
+tab support (e.g. Samsung Internet v4+ or Chrome), it should open with that. If no custom tab support 
+is available, the link should fall back to opening in the default browser app as normal.
 
 ![Screenshot](docs/screenshot.png?raw=true "Screenshot") 
 
@@ -15,7 +15,8 @@ On non-Samsung devices it should use Chrome or whatever it picks up as a valid h
 
 ## Disclaimer
 
-My Java is a bit rusty and I don't have a whole lot of Android development experience! If you spot issues or improvements to be made in the code, please do raise an issue or a PR. Thanks! - Peter
+I'm more of a web developer than an Android developer! I hope that the code is OK, but if you 
+spot any problems or improvements to be made, please do raise an issue or a PR. Thanks! - Peter
 
 ## See also
 

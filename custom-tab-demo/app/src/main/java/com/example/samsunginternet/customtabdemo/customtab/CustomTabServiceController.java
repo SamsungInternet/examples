@@ -62,7 +62,7 @@ public class CustomTabServiceController extends CustomTabsServiceConnection {
 
     public void bindCustomTabService() {
         Context ctx = contextWeakRef.get();
-        String packageName = CustomTabHelper.getPackageNameToUse(ctx);
+        String packageName = CustomTabHelper.getPackageNameToUse(ctx, this.urlToLoad);
         if (ctx == null || packageName == null) {
             return;
         }
@@ -82,7 +82,7 @@ public class CustomTabServiceController extends CustomTabsServiceConnection {
 
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToLoad));
 
-        String packageName = CustomTabHelper.getPackageNameToUse(ctx);
+        String packageName = CustomTabHelper.getPackageNameToUse(ctx, this.urlToLoad);
 
         // If custom tab support, otherwise should fallback to simply opening in the browser
         if (packageName != null) {
