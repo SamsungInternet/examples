@@ -10,7 +10,7 @@ Otherwise it's the same as the simple version (instructions below).
 
 You can just enter made-up details - it just simulates the server-side so won't actually take a real payment!
 
-**[Try it out here](https://samsunginter.net/examples/payment-request-demo-extended/)**
+**[Try it out here](https://samsunginter.net/examples/payment-request-demo-options/)**
 
 ## Development
 
