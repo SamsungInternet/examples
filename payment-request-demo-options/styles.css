@@ -1,0 +1,70 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0 10px;
+  background: #f4f2ff;
+}
+@media (min-width: 500px) {
+  body {
+    padding: 0 6%;
+  }
+}
+@media (min-width: 800px) {
+  body {
+    padding: 0 10%;
+  }
+}
+h1 {
+  font-weight: normal;
+  font-style: italic;
+}
+h2 {
+  font-size: 1.3em;
+  margin-bottom: 1.5em;
+}
+a,
+a:hover,
+a:visited {
+  color: #7f4fff;
+  text-decoration: none;
+}
+p {
+  text-align: justify;
+}
+#donate {
+  display: none;
+}
+#donate-button {
+  font-size: 1.2em;
+  padding: 8px 12px;
+  margin: 1em 0;
+  border: 0;
+  border-radius: 5px;
+  background: #7f4fff;
+  color: white;
+  cursor: pointer;
+}
+#success,
+#error {
+  display: none;
+  font-weight: bold;
+  margin: 1.5em 0;
+}
+#unsupported {
+  display: none;
+  font-style: italic;
+}
+#unsupported .warning {
+  font-weight: bold;
+  color: #f47953;
+  margin-bottom: 0.5em;
+}
+#unsupported .description {
+  margin: 0 0 2em 0;
+}
+footer {
+  margin-top: 2em;
+  font-size: 0.95em;
+  color: #666;
+}
