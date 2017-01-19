@@ -19,7 +19,9 @@ var details = {
       amount: {currency: 'GBP', value: '0.17'}
     }
   ],
-  // If you include requestShipping then you need at least one shipping option 
+  // If you include requestShipping then you need at least one shipping option
+  // NB. If you have multiple options you can handle the selection by adding a
+  // 'shippingoptionchange' event handler 
   shippingOptions: [
     {
       id: 'free',
@@ -87,13 +89,7 @@ function onDonateButtonClick() {
   paymentRequest.addEventListener('shippingaddresschange', function(evt) {
     // Omitting for this demo, but we could process any changes to 
     // e.g. delivery costs, due to the shipping address changing here.
-    //evt.updateWith(Promise.resolve(true));
-    console.log('event', evt);
-  });
-
-  paymentRequest.addEventListener('shippingoptionchange', function(evt) {
-    // Temp
-    console.log('option change');
+    console.log('Shipping address changed', evt);
   });
 
   // Show the native UI
