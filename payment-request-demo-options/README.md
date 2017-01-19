@@ -17,8 +17,8 @@ You can just enter made-up details - it just simulates the server-side so won't 
 To run locally, spin up any static web server, such as `python -m SimpleHTTPServer`
 or [Chrome's web server extension](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en).
 
-Then load it up on your mobile browser with support for the Payment Request API - try Samsung Internet v5 or 
-Chrome for Android. (Edge support is [coming soon](https://blogs.windows.com/msedgedev/2016/12/15/payment-request-api-edge/)).
+Then load it up in a browser with support for the Payment Request API - try Samsung Internet v5,
+Chrome for Android, or [preview builds of Edge](https://blogs.windows.com/msedgedev/2016/12/15/payment-request-api-edge/).
 
 If you're not familiar with pointing your mobile phone to a local server on your development machine,
 there are some instructions [here](https://developers.google.com/web/tools/chrome-devtools/remote-debugging/local-server) 
