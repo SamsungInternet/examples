@@ -6,13 +6,22 @@
     <style>
       body {
         font-family: helvetica, arial, sans-serif;
+        margin: 10px;
+      }
+      video {
+        width: 100%;
       }
     </style>
   </head>
   <body>
     <h1>360 video demo</h1>
-    <p>A simple example of Samsung Internet's 360 degree video playback.</p>
-    <video src="paris-by-diego.webm" type="video/webm; dimension=360;" width="300px" controls="true">
+    
+    <p>A simple example of Samsung Internet's 360 degree video playback, enabled by 
+      adding <code>dimension=360</code> to the <code>type</code> attribute of the <code>video</code> tag.</p>
+    
+    <video src="paris-by-diego.webm" type="video/webm; dimension=360;" poster="poster.jpg" width="100%" controls="true"></video>
+    
+    <p><em>Instructions:</em> In Samsung Internet v4.2+, press play and then the fullscreen icon, to play
+    the video in 360 degree mode. Now you can rotate your phone around to change the view.</p>     
   </body>
 </html>
-  
