@@ -5,8 +5,17 @@ var unsupportedMsg = document.getElementById('unsupported');
 var successMsg = document.getElementById('success');
 var errorMsg = document.getElementById('error');
 
-// Configuration for our payment (other payment providers are available too 😄)
-var methodData = [{supportedMethods: ['visa', 'mastercard', 'amex']}];
+// Configuration for our payment
+var methodData = [{
+  // We're taking a card payment. Other options should come in the future.
+  supportedMethods: ['basic-card'],
+  data: {
+    // Example payment networks
+    supportedNetworks: ['visa', 'mastercard', 'amex'],
+    supportedTypes: ['debit', 'credit']
+  }
+}];
+
 var details = {
   total: {label: 'Test payment', amount: {currency: 'GBP', value: '0.99'}},
   displayItems: [
