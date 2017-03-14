@@ -7,7 +7,7 @@ var errorMsg = document.getElementById('error');
 
 /**
  * Configuration for our payment. Notes:
- *   - basic-card: We're taking a card payment. Other options should come in the future.
+ *   - basic-card: We're taking a card payment. Other options may come in the future.
  *   - We duplicate the payment network names in supportedMethods, to support older format (Samsung Internet v5.0)
  *   - Samsung Internet (current latest v5.4) does not yet support 'supportedTypes'
  *   - These are example payment networks. Others are available! See:
