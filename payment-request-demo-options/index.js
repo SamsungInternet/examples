@@ -5,10 +5,22 @@ var unsupportedMsg = document.getElementById('unsupported');
 var successMsg = document.getElementById('success');
 var errorMsg = document.getElementById('error');
 
-// Configuration for our payment (other payment providers are available too 😄)
-var methodData = [{supportedMethods: ['visa', 'mastercard', 'amex']}];
+/**
+ * Configuration for our payment. Notes:
+ *   - basic-card: We're taking a card payment. Other options may come in the future.
+ *   - We duplicate the payment network names in supportedMethods, to support older format (Samsung Internet v5.0)
+ *   - The spec includes 'supportedTypes' (credit/debit/prepaid) but this does not have browser support yet
+ *   - These are example payment networks. Others are available! See:
+ *     https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/#methoddata-parameter
+ */
+var methodData = [{
+  supportedMethods: ['basic-card', 'visa', 'mastercard', 'amex'],
+  data: {
+    supportedNetworks: ['visa', 'mastercard', 'amex']
+  }
+}];
+
 var details = {
-  total: {label: 'Test payment', amount: {currency: 'GBP', value: '0.99'}},
   displayItems: [
     {
       label: 'Test item',
@@ -19,21 +31,22 @@ var details = {
       amount: {currency: 'GBP', value: '0.17'}
     }
   ],
+  total: {label: 'Test payment', amount: {currency: 'GBP', value: '0.99'}},
   // If you include requestShipping then you need at least one shipping option
   // NB. If you have multiple options you can handle the selection by adding a
-  // 'shippingoptionchange' event handler 
+  // 'shippingoptionchange' event handler
   shippingOptions: [
     {
       id: 'free',
       label: 'Free shipping',
       amount: {currency: 'GBP', value: '0.00'},
-      selected: true,
+      selected: true
     }
   ]
 };
-var options = { 
+var options = {
     requestPayerName: true,
-    requestPayerEmail: true, 
+    requestPayerEmail: true,
     requestPayerPhone: true,
     requestShipping: true,
     shippingType: 'delivery'
@@ -45,9 +58,9 @@ var paymentRequest;
 if (window.PaymentRequest) {
   // Initialise the PaymentRequest with our configuration
   paymentRequest = new PaymentRequest(methodData, details, options);
-  enablePaymentUI(); 
+  enablePaymentUI();
 } else {
-  disablePaymentUI();  
+  disablePaymentUI();
 }
 
 function enablePaymentUI() {
@@ -87,7 +100,7 @@ function showError() {
 function onDonateButtonClick() {
 
   paymentRequest.addEventListener('shippingaddresschange', function(evt) {
-    // Omitting for this demo, but we could process any changes to 
+    // Omitting for this demo, but we could process any changes to
     // e.g. delivery costs, due to the shipping address changing here.
     console.log('Shipping address changed', evt);
   });

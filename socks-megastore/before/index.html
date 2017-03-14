@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socks Megastore</title>
+    <meta name="description" content="For all your online sock needs">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: helvetica, arial;
+      }
+      header {
+        background-color: #706cf5;
+        padding: 10px;
+      }
+      header img {
+        height: 1.25em;
+        position: relative;
+        top: 10px; 
+        left: -5px;
+      }
+      h1, h2 {
+        text-align: center;
+        color: #fff;
+      }
+      h1 {
+        margin: 0 0 0.25em 0;
+      }
+      h2 {
+        font-size: 1.2em;
+        font-style: italic;
+      }
+      main {
+        padding: 10px;
+      }
+      label {
+        display: block;
+        margin: 10px 0 2px 0;
+      }
+      input[type="radio"] + label,
+      input[type="checkbox"] + label {
+        display: inline;
+        margin: 0 0 0 10px;
+      }
+      input[type="text"],
+      input[type="telephone"],
+      select {
+        display: block;
+        padding: 4px 0;
+        min-width: 300px;
+        margin-bottom: 15px;
+      }
+      fieldset {
+        border: 1px solid #ccc;
+      }
+      fieldset div {
+        margin: 0 0 5px 0;
+      }
+      #shippingSpeed {
+        margin-top: 1em;
+      }
+      #placeOrder {
+        min-width: 300px;
+        background-color: #706cf5;
+        padding: 10px;
+        color: #fff;
+        border: 0;
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><img src="images/socks-emoji-purple.png" alt="Sock logo"/> Socks Megastore</h1>
+      <h2>For all your online sock needs</h2>
+    </header>
+    <main>
+      <h3>Step 1 of 2 - Billing &amp; Shipping Information</h3>
+
+      <fieldset>
+
+        <h4>Billing Information</h4>
+        <p>Please enter the billing address as it appears on your credit card statement.</p>
+
+        <label for="firstName">* First Name:</label>
+        <input id="firstName" type="text">
+
+        <label for="middleInitial">Middle Initial:</label>
+        <input id="middleInitial" type="text">
+
+        <label for="lastName">* Last Name:</label>
+        <input id="lastName" type="text">
+
+        <label for="address1">* Address 1:</label>
+        <input id="address1" type="text">
+
+        <label for="address2">Address 2:</label>
+        <input id="address2" type="text">
+
+        <label for="address3">Address 3:</label>
+        <input id="address3" type="text">
+
+        <label for="city">* City:</label>
+        <input id="city" type="text">
+
+        <label for="county">* County:</label>
+        <select id="county" name="county">
+          <option>Select a county:</option>
+          <option value="surrey">Surrey</option>
+        </select>
+
+        <label for="postcode">* Postcode:</label>
+        <input id="postcode" type="text">
+
+      </fieldset>
+
+      <fieldset>
+
+        <h4>Contact Information</h4>
+        
+        <label for="primaryPhone">* Primary phone:</label>
+        <input id="primaryPhone" type="telephone">
+
+        <label for="eveningPhone">Evening phone:</label>
+        <input id="eveningPhone" type="telephone">
+
+        <label for="mobilePhone">Mobile phone:</label>
+        <input id="mobilePhone" type="telephone">
+
+        <div>        
+          <input id="emailUpdates" type="checkbox" name="emailUpdates" value="yes">
+          <label for="emailUpdates">Please send me email updates including discounts and special sock events</label>
+        <div>
+
+      </fieldset>
+
+      <fieldset>
+
+        <h4>Shipping Options</h4>
+
+        <div>
+          <input id="shippingOption3" type="radio" name="shippingOption" value="other" checked>
+          <label for="shippingOption3">Ship to a new address</label>
+        </div>
+        
+        <div>
+          <input id="shippingOption1" type="radio" name="shippingOption" value="billingAddress">
+          <label for="shippingOption1">Ship to billing address</label>
+        </div>
+
+        <div>
+          <input id="shippingOption2" type="radio" name="shippingOption" value="store">
+          <label for="shippingOption2">Ship to a store</label>
+        </div>
+
+        <label for="shippingaddress1">* Address 1:</label>
+        <input id="shippingAddress1" type="text">
+
+        <label for="shippingaddress2">Address 2:</label>
+        <input id="shippingAddress2" type="text">
+
+        <label for="shippingaddress3">Address 3:</label>
+        <input id="shippingAddress3" type="text">
+
+        <label for="shippingCity">* City:</label>
+        <input id="shippingCity" type="text">
+
+        <label for="shippingCounty">* County:</label>
+        <select id="shippingCounty" name="county">
+          <option>Select a county:</option>
+          <option value="surrey">Surrey</option>
+        </select>
+
+        <label for="shippingPostcode">* Postcode:</label>
+        <input id="shippingPostcode" type="text">
+         
+        <select id="shippingSpeed" name="shippingSpeed">
+          <option>2nd Business Day - £0</option>
+          <option>Next Business Day - £3.99</option>
+        </select>
+        
+        <p><a href="#">Shipping policy</a></p>
+
+      </fieldset>
+
+      <h3>Step 2 of 2 - Payment Information</h3>
+      
+      <fieldset>
+
+        <h4>Credit Card Information</h4>
+
+        <div>
+          <input id="giftCard" type="checkbox" name="giftCard" value="yes">
+          <label for="giftCard">I have a gift card to enter</label>
+        </div>
+
+        <select name="cardType">
+          <option>* Select card type</option>
+          <option>Visa</option>
+          <option>Mastercard</option>
+        </select>
+
+        <label for="cardNumber">* Card number:</label>
+        <input id="cardNumber" type="text">
+
+        <label for="cardName">* Name on card:</label>
+        <input id="cardName" type="text">
+
+        <label for="cvv">* CVV:</label>
+        <input id="cvv" type="text">
+
+        <select id="yearOfBirth">
+          <option>Year of birth</option>
+          <option>1982</option>
+        </select>
+
+        <select id="paymentPlan">
+          <option>Select a payment plan</option>
+        </select>
+        
+        <p><a href="#">Summary of terms and conditions</a></p>
+
+      </fieldset>
+
+      <fieldset>
+
+        <h4>Your order summary</h4>
+
+        <p>Please review your Order Summary below before placing your order</p>
+
+        <p><a href="#">Shopping bag (1 item)</a></p>
+        <p><a href="#">Billing address</a></p>
+        <p><a href="#">Contact information</a></p>
+        <p><a href="#">Shipping address</a></p>
+        <p><a href="#">Shipping method</a></p>
+
+        <div><button id="placeOrder">Place order</button></div>
+        
+      </fieldset>
+      
+    </main>    
+  </body>
