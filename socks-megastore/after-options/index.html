@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socks Megastore</title>
+    <meta name="description" content="For all your online sock needs">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/socks-emoji-purple.png" type="image/png">
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: helvetica, arial;
+      }
+      header {
+        background-color: #706cf5;
+        padding: 10px;
+      }
+      header img {
+        height: 1.25em;
+        position: relative;
+        top: 10px;
+        left: -5px;
+      }
+      h1, h2 {
+        text-align: center;
+        color: #fff;
+      }
+      h1 {
+        margin: 0 0 0.25em 0;
+      }
+      h2 {
+        font-size: 1.2em;
+        font-style: italic;
+        margin-bottom: 0.5em;
+        font-weight: normal;
+      }
+      main {
+        padding: 10px 15px 30px 15px;
+      }
+      h3 {
+        font-size: 1.5em;
+      }
+      ul {
+        position: relative;
+      }
+      ul li {
+        margin-bottom: 0.5em;
+      }
+      #socks {
+        max-width: 100%;
+      }
+      #purchase {
+        cursor: pointer;
+        width: 100%;
+        background-color: #706cf5;
+        padding: 10px;
+        color: #fff;
+        border: 0;
+        font-size: 1.2em;
+        margin-top: 1em;
+      }
+      @media (min-width: 500px) {
+        main {
+          padding: 10px 20px 30px 20px;
+        }
+        ul {
+          left: 20px;
+        }
+        #socks {
+          height: 400px;
+          float: left;
+          margin-right: 40px;
+        }
+        #purchase {
+          width: 250px;
+          width: calc(100% - 280px);
+          border-radius: 5px;
+        }
+      }
+      footer {
+        clear: left;
+        margin-top: 2em;
+        font-size: 0.9em;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><img src="images/socks-emoji-purple.png" alt="Sock logo"/> Socks Megastore</h1>
+      <h2>For all your online sock needs</h2>
+    </header>
+    <main>
+
+      <h3>Samsung Internet limited edition "classic" socks</h3>
+
+      <img id="socks" src="images/samsung-internet-socks-1.jpg" alt="Samsung Internet socks gallery 1"/>
+
+      <h4>Price: &pound;12  &middot;  Shipping: &pound;1.50</h4>
+
+      <p>
+        Featuring Samsung Internet's classic logo, these socks are an instant retro hit.
+        A firm favourite for web developers, evoking themes of Progressive Web Apps,
+        HTML5, Physical Web, WebVR and web gaming.
+      </p>
+
+      <p>Show off your love for the web <em>and</em> keep your feet warm at the same time.</p>
+
+      <ul>
+        <li>Unique, limited edition design</li>
+        <li>100% cotton for durability &amp; comfort</li>
+        <li>Available in Samsung Internet purple only</li>
+      </ul>
+
+      <div><button id="purchase">Purchase</button></div>
+
+    </main>
+
+    <footer>
+      <p>Q: Is this for real? A: No! It's just a Payment Request API demo. It doesn't take real payments
+        and doesn't ship real socks (although it would be cool to make this real in the future) :)</p>
+    </footer>
+
+    <script type="text/javascript">
+
+      var purchaseBtn = document.getElementById('purchase');
+
+      function showSuccess() {
+        purchaseBtn.innerHTML = 'Purchased (not for real!)';
+      }
+
+      /**
+       * Here is where we would send the payment info to the server / payment gateway for processing,
+       * but I'm not quite ready to take real money from you yet 😉 Simulating by just waiting 2 secs.
+       */
+      function processPaymentDetails(uiResult) {
+        return new Promise(function (resolve) {
+          setTimeout(function() {
+            resolve(uiResult);
+          }, 2000);
+        });
+      }
+
+      /**
+       * Configuration for our payment. Notes:
+       *   - basic-card: We're taking a card payment. Other options may come in the future.
+       *   - We duplicate the payment network names in supportedMethods, to support older format (Samsung Internet v5.0)
+       *   - Samsung Internet (current latest v5.4) does not yet support 'supportedTypes'
+       *   - These are example payment networks. Others are available! See:
+       *     https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/#methoddata-parameter
+       */
+      var methodData = [{
+        supportedMethods: ['basic-card', 'visa', 'mastercard', 'amex'],
+        data: {
+          supportedNetworks: ['visa', 'mastercard', 'amex']
+        }
+      }];
+
+      var details = {
+        displayItems: [
+          {
+            label: 'Socks',
+            amount: {currency: 'GBP', value: '12.00'}
+          },
+          {
+            label: 'Loyalty discount',
+            amount: {currency: 'GBP', value: '-1.00'}
+          }
+        ],
+        total: {label: 'Total', amount: {currency: 'GBP', value: '11.00'}},
+        // If you include requestShipping then you need at least one shipping option
+        // NB. If you have multiple options you can handle the selection by adding a
+        // 'shippingoptionchange' event handler
+        shippingOptions: [
+          {
+            id: 'standard',
+            label: 'Standard shipping',
+            amount: {currency: 'GBP', value: '1.50'},
+            selected: true
+          }
+        ]
+      };
+      var options = {
+        requestPayerName: true,
+        requestPayerEmail: true,
+        requestPayerPhone: true,
+        requestShipping: true
+      };
+
+      var paymentRequest;
+
+      function onClickPurchase() {
+
+        paymentRequest.show()
+          .then(function(uiResult) {
+            processPaymentDetails(uiResult)
+              .then(function(uiResult) {
+                console.log('Success');
+                uiResult.complete('success');
+                showSuccess();
+              });
+          })
+          .catch(function(error) {
+            console.warn('Unable to complete purchase', error);
+            alert('Oh no! There was a problem completing the purchase: ' + error);
+          });
+
+      }
+
+      if (window.PaymentRequest) {
+
+        // Set up Payment Request
+
+        paymentRequest = new PaymentRequest(methodData, details, options);
+
+        purchaseBtn.addEventListener('click', onClickPurchase);
+
+        paymentRequest.addEventListener('shippingaddresschange', function(evt) {
+          // Omitting for this demo, but we could process any changes to
+          // e.g. delivery costs, due to the shipping address changing here.
+          console.log('Shipping address changed', evt);
+        });
+
+      } else {
+        console.error('Oh no! This browser does not support the Payment Request API. ' +
+          'Another method should be provided here!');
+      }
+    </script>
+
+  </body>
