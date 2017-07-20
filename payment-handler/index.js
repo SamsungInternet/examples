@@ -1,3 +1,6 @@
+var btnRegister = document.getElementById('register');
+var msgResult = document.getElementById('result-msg');
+
 function register() {
 
   if (navigator.serviceWorker) {
@@ -26,6 +29,7 @@ function register() {
 
         } else {
           console.warn('Payment Handler API not supported');
+          msgResult.innerHTML = 'Sorry the Payment Handler API is not supported in this browser';
         }
 
         return registration;
@@ -36,7 +40,11 @@ function register() {
         console.error('Error registering service worker', error);
       });
 
+  } else {
+    console.warn('Service Worker API not supported');
+    msgResult.innerHTML = 'Sorry the Service Worker API is not supported in this browser';
   }
 
 }
 
+btnRegister.addEventListener('click', register);
