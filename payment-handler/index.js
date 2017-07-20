@@ -5,10 +5,12 @@ function register() {
 
   if (navigator.serviceWorker) {
 
-    navigator.serviceWorker.register('service-worker.js')
+    navigator.serviceWorker.register('service-worker.js', {scope: './'})
       .then(function(registration) {
 
-        if (registration.paymentAppManager) {
+        // NB. The example code here shows 'paymentAppManager', but that's undefined for me:
+        // https://github.com/w3c/payment-handler/blob/gh-pages/proposals/examples.md
+        if (registration.paymentManager) {
           
           /*
           registration.paymentAppManager.options.set('-key', {
@@ -18,7 +20,7 @@ function register() {
           });
           */
 
-          registration.paymentAppManager.setManifest({
+          registration.paymentManager.setManifest({
             name: 'CardProviderDemo',
             options: [{
               enabledMethods: ['basic-card'],
