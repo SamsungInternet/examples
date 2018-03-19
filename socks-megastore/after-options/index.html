@@ -68,6 +68,9 @@
         margin-top: 1em;
         border-radius: 4px;
       }
+      #purchased {
+        display: none;
+      }
       footer {
         padding: 15px;
         clear: left;
@@ -79,22 +82,30 @@
     </style>
   </head>
   <body>
-  <header>
-    <h1>Socks Megastore</h1>
-  </header>
-  <main>
+    <header>
+      <h1>Socks Megastore</h1>
+    </header>
+    <main>
 
-    <h3>A pair of odd socks</h3>
+      <div id="item">
+        <h3>A pair of odd socks</h3>
 
-    <img id="socks" src="../images/samsung-internet-socks-5.jpg" alt="Samsung Internet socks gallery 1"/>
+        <img id="socks" src="../images/samsung-internet-socks-5.jpg" alt="Samsung Internet socks gallery 1"/>
 
-    <h4>Price: &pound;12  &middot;  Shipping: &pound;1.50</h4>
+        <h4>Price: &pound;12  &middot;  Shipping: &pound;1.50</h4>
 
-    <p>
-      A pair of odd Samsung Internet socks, in variations of purple.
-    </p>
+        <p>
+          A pair of odd Samsung Internet socks, in variations of purple.
+        </p>
 
-    <div><button id="purchase">Purchase</button></div>
+        <div><button id="purchase">Purchase</button></div>
+      </div>
+      <div id="purchased">
+        <h3>Purchase completed</h3>
+
+        <p>The demonstration purchase is now complete. No information has been exchanged
+          and no money has actually been taken.</p>
+      </div>
 
     </main>
 
@@ -105,9 +116,12 @@
     <script type="text/javascript">
 
       var purchaseBtn = document.getElementById('purchase');
+      var itemPanel = document.getElementById('item');
+      var purchasedPanel = document.getElementById('purchased');
 
       function showSuccess() {
-        purchaseBtn.innerHTML = 'Purchased (not for real!)';
+        itemPanel.style.display = 'none';
+        purchasedPanel.style.display = 'block';
       }
 
       /**
@@ -178,7 +192,7 @@
           })
           .catch(function(error) {
             console.warn('Unable to complete purchase', error);
-            alert('Oh no! There was a problem completing the purchase: ' + error);
+            alert('Unable to complete the demo purchase: ' + error);
           });
 
       }
@@ -198,9 +212,10 @@
         });
 
       } else {
-        console.error('Oh no! This browser does not support the Payment Request API. ' +
-          'Another method should be provided here!');
+        console.error('Alas! This browser does not support the Payment Request API. ' +
+          'Another method should be provided here.');
       }
     </script>
 
   </body>
+</html>
