@@ -206,9 +206,10 @@
         purchaseBtn.addEventListener('click', onClickPurchase);
 
         paymentRequest.addEventListener('shippingaddresschange', function(evt) {
-          // Omitting for this demo, but we could process any changes to
-          // e.g. delivery costs, due to the shipping address changing here.
+          // Omitting further features for this demo, but we could check e.g.
+          // changes to delivery costs, due to the shipping address changing here.
           console.log('Shipping address changed', evt);
+          evt.updateWith(details);
         });
 
       } else {
